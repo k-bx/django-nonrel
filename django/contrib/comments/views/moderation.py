@@ -23,7 +23,7 @@ def flag(request, comment_id, next=None):
     # Flag on POST
     if request.method == 'POST':
         perform_flag(request, comment)
-        return next_redirect(request.POST.copy(), next, flag_done, c=comment.pk)
+        return next_redirect(request, next, flag_done, c=comment.pk)
 
     # Render a form on GET
     else:
@@ -77,7 +77,7 @@ def approve(request, comment_id, next=None):
     if request.method == 'POST':
         # Flag the comment as approved.
         perform_approve(request, comment)
-        return next_redirect(request.POST.copy(), next, approve_done, c=comment.pk)
+        return next_redirect(request, next, approve_done, c=comment.pk)
 
     # Render a form on GET
     else:
